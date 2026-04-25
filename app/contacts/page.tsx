@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { LeadForm } from "@/components/leads/LeadForm";
+import { ContactsForm } from "@/components/leads/ContactsForm";
 
 export const metadata: Metadata = {
   title: "Контакты",
@@ -83,18 +83,7 @@ export default function ContactsPage() {
               />
             </div>
 
-            <div className="form-card">
-              <h2>Записаться на&nbsp;просмотр</h2>
-              <p className="lede">
-                Расскажите немного о&nbsp;себе&nbsp;— подберём участок и&nbsp;перезвоним
-                в&nbsp;течение часа.
-              </p>
-              <LeadForm source="contacts" />
-              <p className="privacy" style={{ marginTop: 16 }}>
-                Нажимая «Записаться», вы&nbsp;соглашаетесь с&nbsp;политикой обработки
-                персональных данных.
-              </p>
-            </div>
+            <ContactsForm />
           </div>
         </div>
       </section>
