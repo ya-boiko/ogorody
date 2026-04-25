@@ -1,0 +1,122 @@
+backend:
+  name: github
+  repo: ya-boiko/ogorody
+  branch: main
+  base_url: https://ogorody-decap-oauth.workers.dev
+
+# Где Decap сохраняет загруженные через image-widget файлы
+media_folder: site/public/assets/uploads
+# URL-путь, который попадает в JSON. Вшиваем basePath /ogorody —
+# совпадает с deployment URL. lib/asset.ts идемпотентен и не дублирует префикс.
+public_folder: /ogorody/assets/uploads
+
+site_url: https://ya-boiko.github.io/ogorody
+display_url: https://ya-boiko.github.io/ogorody
+locale: ru
+
+collections:
+  - name: plots
+    label: Участки
+    label_singular: Участок
+    folder: site/content/plots
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: id
+    slug: '{{fields.id}}'
+    summary: '{{title}} — {{area}} соток ({{status}})'
+    sortable_fields: [id, area, pricePerMonth, status]
+    fields:
+      - { name: id, label: ID, widget: number, value_type: int, min: 1 }
+      - { name: title, label: Название, widget: string }
+      - { name: headline, label: Подзаголовок, widget: string, hint: 'Короткая фраза, показывается в карточке: «Легко начать», «Парковка рядом»' }
+      - name: scenario
+        label: Сценарий
+        widget: select
+        options: ['Новичкам', 'Для семьи', 'Совместная аренда', 'Большой формат', 'С делегированием']
+      - { name: area, label: Размер (соток), widget: number, value_type: int, min: 1 }
+      - { name: location, label: Расположение, widget: string }
+      - { name: pricePerMonth, label: Цена за месяц (₽), widget: number, value_type: int, min: 0 }
+      - name: status
+        label: Статус
+        widget: select
+        options:
+          - { label: Свободен, value: available }
+          - { label: Забронирован, value: booked }
+          - { label: Занят, value: sold }
+      - name: photos
+        label: Фотографии
+        widget: list
+        min: 1
+        field: { name: src, label: Файл, widget: image }
+      - { name: description, label: Описание, widget: text }
+      - name: features
+        label: Что включено
+        widget: list
+        field: { name: item, label: Пункт, widget: string }
+
+  - name: articles
+    label: Статьи блога
+    label_singular: Статья
+    folder: site/content/articles
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: slug
+    slug: '{{slug}}'
+    summary: '{{title}} ({{publishedAt}})'
+    sortable_fields: [publishedAt, title]
+    fields:
+      - { name: slug, label: URL slug, widget: string, pattern: ['^[a-z0-9-]+$', 'строчные ascii и дефисы'] }
+      - { name: title, label: Заголовок, widget: string }
+      - { name: excerpt, label: Подзаголовок (для SEO и превью), widget: text }
+      - name: category
+        label: Рубрика
+        widget: select
+        options: ['Гид', 'Сезон', 'Опыт', 'Советы', 'Календарь', 'Истории участников']
+      - { name: cover, label: Обложка, widget: image }
+      - { name: publishedAt, label: Дата публикации, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { name: readingMinutes, label: Время чтения (минут), widget: number, value_type: int, min: 1 }
+      - { name: featured, label: Главный материал блога, widget: boolean, default: false, required: false }
+      - name: author
+        label: Автор
+        widget: object
+        required: false
+        fields:
+          - { name: name, label: Имя, widget: string }
+          - { name: initials, label: Инициалы (для аватара), widget: string, pattern: ['^.{1,3}$', 'максимум 3 символа'] }
+          - { name: role, label: Роль, widget: string }
+      - name: body
+        label: Текст
+        widget: text
+        hint: 'Абзацы разделяются пустой строкой. Подзаголовки начинаются с «## ».'
+
+  - name: news
+    label: Новости
+    label_singular: Новость
+    folder: site/content/news
+    create: true
+    delete: true
+    extension: json
+    format: json
+    identifier_field: slug
+    slug: '{{slug}}'
+    summary: '{{title}} ({{publishedAt}})'
+    sortable_fields: [publishedAt, title]
+    fields:
+      - { name: slug, label: URL slug, widget: string, pattern: ['^[a-z0-9-]+$', 'строчные ascii и дефисы'] }
+      - { name: title, label: Заголовок, widget: string }
+      - { name: excerpt, label: Краткое описание, widget: text }
+      - name: category
+        label: Рубрика
+        widget: select
+        options: ['Анонс', 'Инфраструктура', 'Сервис', 'Команда', 'Итоги', 'Событие']
+      - { name: cover, label: Обложка, widget: image }
+      - { name: publishedAt, label: Дата, widget: datetime, date_format: 'YYYY-MM-DD', time_format: false, format: 'YYYY-MM-DD' }
+      - { name: featured, label: Главная новость, widget: boolean, default: false, required: false }
+      - name: body
+        label: Текст
+        widget: text
+        hint: 'Абзацы разделяются пустой строкой. Подзаголовки начинаются с «## ».'
