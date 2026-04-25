@@ -1,0 +1,11 @@
+name = "ogorody-decap-oauth"
+main = "src/index.ts"
+compatibility_date = "2024-09-23"
+
+# Vars set via `wrangler secret put` — никогда не коммитим в репо:
+#   wrangler secret put GITHUB_CLIENT_ID
+#   wrangler secret put GITHUB_CLIENT_SECRET
+
+# Public origin where /admin/ is served. Used to whitelist postMessage:
+[vars]
+ADMIN_ORIGIN = "https://ya-boiko.github.io"
