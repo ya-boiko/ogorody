@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export function Hero() {
   return (
     <section className="hero">
       <div className="hero-bg">
         <Image
-          src="/assets/hero.jpg"
+          src={asset("/assets/hero.jpg")}
           alt="Огороды — поле и закат"
           fill
           priority

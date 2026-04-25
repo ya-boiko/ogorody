@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NewsCard } from "@/components/content/NewsCard";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
+import { asset } from "@/lib/asset";
 import { getAllNews } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -51,7 +52,7 @@ export default async function NewsPage() {
             <div className="layout">
               <Image
                 className="hero-img"
-                src={featured.cover}
+                src={asset(featured.cover)}
                 alt={featured.title}
                 width={900}
                 height={600}

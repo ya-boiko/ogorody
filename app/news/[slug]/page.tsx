@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NewsCard } from "@/components/content/NewsCard";
 import { RichBody } from "@/components/content/RichBody";
+import { asset } from "@/lib/asset";
 import { getAllNews, getNewsBySlug } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -26,7 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: item.title,
       description: item.excerpt,
-      images: [{ url: item.cover }],
+      images: [{ url: asset(item.cover) }],
       type: "article",
       publishedTime: item.publishedAt,
     },
@@ -67,7 +68,7 @@ export default async function NewsItemPage({
           <div className="layout">
             <Image
               className="hero-img"
-              src={item.cover}
+              src={asset(item.cover)}
               alt={item.title}
               width={1200}
               height={800}

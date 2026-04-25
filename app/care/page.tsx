@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "Помощь в уходе",
@@ -96,7 +97,7 @@ export default function CarePage() {
           <div className="layout">
             <Image
               className="hero-img"
-              src="/assets/plots/family-1.jpg"
+              src={asset("/assets/plots/family-1.jpg")}
               alt="Семья на участке"
               width={900}
               height={600}

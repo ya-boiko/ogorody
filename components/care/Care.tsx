@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export function Care() {
   return (
     <section className="care">
@@ -70,7 +72,7 @@ export function Care() {
 
         <p className="foot-note">
           Цены на&nbsp;разовые услуги и&nbsp;детали&nbsp;—{" "}
-          <a href="/care">на&nbsp;странице «Помощь в&nbsp;уходе»</a>
+          <Link href="/care">на&nbsp;странице «Помощь в&nbsp;уходе»</Link>
         </p>
       </div>
     </section>

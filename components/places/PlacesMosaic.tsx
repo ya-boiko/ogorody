@@ -1,3 +1,5 @@
+import { asset } from "@/lib/asset";
+
 type Place = {
   size: "p-hero" | "p-md" | "p-sm";
   image: string;
@@ -40,7 +42,7 @@ export function PlacesMosaic() {
         <div className="mosaic">
           {PLACES.map((p) => (
             <div className={`place ${p.size}`} key={`${p.title}-${p.image}`}>
-              <div className="ph" style={{ backgroundImage: `url('${p.image}')` }} />
+              <div className="ph" style={{ backgroundImage: `url('${asset(p.image)}')` }} />
               {p.badge && <span className="badge">{p.badge}</span>}
               <div className="caption">
                 <h3>{p.title}</h3>

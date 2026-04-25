@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "О проекте",
@@ -104,7 +105,7 @@ export default function AboutPage() {
           <div className="layout">
             <Image
               className="hero-img"
-              src="/assets/plots/big-1.jpg"
+              src={asset("/assets/plots/big-1.jpg")}
               alt="Участок"
               width={900}
               height={600}
@@ -162,7 +163,7 @@ export default function AboutPage() {
             </div>
             <Image
               className="stats-image"
-              src="/assets/plots/family-2.jpg"
+              src={asset("/assets/plots/family-2.jpg")}
               alt="Семья на участке"
               width={900}
               height={600}
@@ -201,7 +202,7 @@ export default function AboutPage() {
             {GALLERY.map((src, i) => (
               <Image
                 key={src}
-                src={src}
+                src={asset(src)}
                 alt={`Пространство клуба — ${i + 1}`}
                 width={600}
                 height={420}

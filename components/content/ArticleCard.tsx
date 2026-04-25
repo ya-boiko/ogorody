@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Article } from "@/lib/types";
+import { asset } from "@/lib/asset";
 import { formatRuDate } from "@/lib/format-date";
+import type { Article } from "@/lib/types";
 
 export function ArticleCard({ article }: { article: Article }) {
   return (
     <Link className="article-card" href={`/blog/${article.slug}`}>
       <div className="media">
-        <Image src={article.cover} alt={article.title} width={600} height={400} />
+        <Image src={asset(article.cover)} alt={article.title} width={600} height={400} />
       </div>
       <div className="body">
         <span className="article-tag">{article.category}</span>

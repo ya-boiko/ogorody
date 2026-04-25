@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export function Footer() {
   return (
@@ -10,7 +11,7 @@ export function Footer() {
             <Link className="logo" href="/" aria-label="Огороды — на главную">
               <Image
                 className="logo-img logo-img-invert"
-                src="/assets/logo.png"
+                src={asset("/assets/logo.png")}
                 alt="Огороды"
                 width={174}
                 height={45}

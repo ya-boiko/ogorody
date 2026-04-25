@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 
 export function Watch() {
   return (
@@ -25,7 +26,7 @@ export function Watch() {
             <div className="bubble has-img">
               <div
                 className="img"
-                style={{ backgroundImage: "url('/assets/hero.jpg')" }}
+                style={{ backgroundImage: `url('${asset("/assets/hero.jpg")}')` }}
               />
               <div className="who" style={{ padding: "0 10px" }}>
                 Игорь · агроном

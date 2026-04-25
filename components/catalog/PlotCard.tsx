@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 import type { Plot } from "@/lib/types";
 
 const STATUS_LABEL = {
@@ -32,7 +33,7 @@ export function PlotCard({ plot }: { plot: Plot }) {
       <div className="media">
         {cover && (
           <Image
-            src={cover}
+            src={asset(cover)}
             alt={plot.title}
             width={600}
             height={420}

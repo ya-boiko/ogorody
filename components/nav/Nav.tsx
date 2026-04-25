@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 import { MobileMenu } from "./MobileMenu";
 
 const NAV_LINKS = [
@@ -18,7 +19,7 @@ export function Nav() {
           <Link className="logo" href="/" aria-label="Огороды — на главную">
             <Image
               className="logo-img"
-              src="/assets/logo.png"
+              src={asset("/assets/logo.png")}
               alt="Огороды"
               width={174}
               height={45}

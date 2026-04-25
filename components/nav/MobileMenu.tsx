@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { asset } from "@/lib/asset";
 
 const NAV_LINKS = [
   { href: "/care", label: "Помощь в уходе" },
@@ -88,7 +89,7 @@ export function MobileMenu() {
           <Link className="logo" href="/" aria-label="Огороды — на главную">
             <Image
               className="logo-img"
-              src="/assets/logo.png"
+              src={asset("/assets/logo.png")}
               alt="Огороды"
               width={140}
               height={36}

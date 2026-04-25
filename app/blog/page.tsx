@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArticleCard } from "@/components/content/ArticleCard";
 import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
+import { asset } from "@/lib/asset";
 import { getAllArticles } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -52,7 +53,7 @@ export default async function BlogPage() {
             <div className="layout">
               <Image
                 className="hero-img"
-                src={featured.cover}
+                src={asset(featured.cover)}
                 alt={featured.title}
                 width={900}
                 height={600}

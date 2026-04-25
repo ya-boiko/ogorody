@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { asset } from "@/lib/asset";
 import { getAllPlots } from "@/lib/plots";
 
 const STATUS_LABEL = {
@@ -40,7 +41,7 @@ export async function PlotsPreview() {
         <div className="cards">
           {featured.map((p) => (
             <Link className="plot" key={p.id} href={`/catalog/${p.id}`}>
-              <div className="ph" style={{ backgroundImage: `url('${p.photos[0]}')` }}>
+              <div className="ph" style={{ backgroundImage: `url('${asset(p.photos[0] ?? "")}')` }}>
                 <span className="corner">{STATUS_LABEL[p.status]}</span>
               </div>
               <div className="body">

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 
 type PlotGalleryProps = {
   photos: string[];
@@ -18,7 +19,7 @@ export function PlotGallery({ photos, alt }: PlotGalleryProps) {
       <div className="main-img-wrap">
         <Image
           className="main-img"
-          src={main}
+          src={asset(main)}
           alt={alt}
           width={1200}
           height={800}
@@ -39,7 +40,7 @@ export function PlotGallery({ photos, alt }: PlotGalleryProps) {
               }}
             >
               <Image
-                src={photo}
+                src={asset(photo)}
                 alt=""
                 width={200}
                 height={140}
