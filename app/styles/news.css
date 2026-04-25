@@ -1,0 +1,248 @@
+  /* HERO featured news — based on plot-hero pattern */
+  .news-hero-section {
+    padding: 12px 0 56px;
+    background: var(--bg);
+  }
+  .news-hero-section .layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .news-hero-section .hero-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .news-hero-section .hero-info { display: flex; flex-direction: column; gap: 18px; }
+  .news-hero-section .news-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 6px 12px;
+    background: rgba(200, 85, 61, 0.08);
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .news-hero-section .news-tag::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .news-hero-section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .news-hero-section .hero-lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--primary-ink);
+    margin: 0;
+  }
+  .news-hero-section .hero-meta {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-muted);
+  }
+  .news-hero-section .hero-meta .dot {
+    width: 3px; height: 3px; border-radius: 50%;
+    background: var(--text-muted); opacity: 0.5;
+  }
+  .news-hero-section .hero-cta {
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  /* Filter chips */
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 8px 0 36px;
+  }
+  .filter-chips button {
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: var(--card);
+    box-shadow: inset 0 0 0 1px var(--line);
+    color: var(--primary-ink);
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 150ms, color 150ms, box-shadow 150ms;
+  }
+  .filter-chips button:hover {
+    background: var(--surface-green);
+    box-shadow: inset 0 0 0 1px var(--surface-green);
+  }
+  .filter-chips button.active {
+    background: var(--primary);
+    color: var(--bg);
+    box-shadow: inset 0 0 0 1px var(--primary);
+  }
+
+  /* News grid — same style as article-card */
+  .news-grid-section {
+    padding: 0 0 80px;
+    background: var(--bg);
+  }
+  .news-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+  }
+  .news-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+  .news-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .news-card .media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .news-card .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 500ms ease;
+  }
+  .news-card:hover .media img { transform: scale(1.03); }
+  .news-card .body {
+    padding: 24px 26px 26px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+  .news-card .news-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 5px 11px;
+    background: rgba(200, 85, 61, 0.08);
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .news-card .news-tag::before {
+    content: "";
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .news-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    color: var(--primary);
+    margin: 0;
+  }
+  .news-card p {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--primary-ink);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .news-card .meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 8px;
+  }
+
+  /* Newsletter — dark green like plot-form */
+  .news-newsletter {
+    background: var(--primary);
+    color: var(--bg);
+    padding: 72px 0;
+  }
+  .news-newsletter .layout {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .news-newsletter h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--bg);
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .news-newsletter p {
+    font-size: 16px;
+    line-height: 1.55;
+    color: rgba(250,247,240,0.78);
+    margin: 0 0 32px;
+  }
+  .news-newsletter form {
+    display: flex;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .news-newsletter input {
+    flex: 1;
+    padding: 16px 20px;
+    border-radius: var(--radius-sm);
+    border: 0;
+    background: rgba(250,247,240,0.12);
+    color: var(--bg);
+    font-family: var(--font-body);
+    font-size: 15px;
+    box-shadow: inset 0 0 0 1px rgba(250,247,240,0.2);
+  }
+  .news-newsletter input::placeholder { color: rgba(250,247,240,0.5); }
+  .news-newsletter input:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 1px rgba(250,247,240,0.5);
+  }
+  .news-newsletter button {
+    padding: 16px 28px;
+    background: var(--bg);
+    color: var(--primary);
+    border-radius: var(--radius-sm);
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 150ms;
+  }
+  .news-newsletter button:hover { background: var(--secondary); }

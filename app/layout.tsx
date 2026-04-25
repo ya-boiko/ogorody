@@ -10,6 +10,10 @@ import "./styles/catalog.css";
 import "./styles/contacts.css";
 import "./styles/care.css";
 import "./styles/about.css";
+import "./styles/blog.css";
+import "./styles/article.css";
+import "./styles/news.css";
+import "./styles/news-item.css";
 import "./styles/lead-form.css";
 
 const manrope = localFont({
