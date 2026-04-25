@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Subproject with its own toolchain
+    "cloudflare-oauth-worker/**",
   ]),
 ]);
 
