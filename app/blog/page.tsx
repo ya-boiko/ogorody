@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArticleCard } from "@/components/content/ArticleCard";
+import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 import { getAllArticles } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -117,10 +118,7 @@ export default async function BlogPage() {
               Календарь, советы агронома и&nbsp;разборы. Без рекламы и&nbsp;спама.
               Отписка в&nbsp;один клик.
             </p>
-            <p style={{ marginTop: 12, opacity: 0.7 }}>
-              Email-рассылка появится с&nbsp;началом сезона.{" "}
-              <Link href="/contacts">Напишите нам</Link>, и&nbsp;добавим вас в&nbsp;список.
-            </p>
+            <NewsletterForm source="blog" />
           </div>
         </div>
       </section>

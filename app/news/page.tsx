@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { NewsCard } from "@/components/content/NewsCard";
+import { NewsletterForm } from "@/components/newsletter/NewsletterForm";
 import { getAllNews } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -99,10 +100,7 @@ export default async function NewsPage() {
               Подпишитесь на&nbsp;рассылку&nbsp;— раз в&nbsp;месяц присылаем главное
               о&nbsp;сезоне, новых сервисах и&nbsp;событиях.
             </p>
-            <p style={{ marginTop: 12, opacity: 0.7 }}>
-              Email-рассылка появится с&nbsp;началом сезона.{" "}
-              <Link href="/contacts">Напишите нам</Link>, и&nbsp;добавим вас в&nbsp;список.
-            </p>
+            <NewsletterForm source="news" />
           </div>
         </div>
       </section>
