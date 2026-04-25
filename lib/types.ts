@@ -16,6 +16,13 @@ export type Plot = {
   features: string[];
 };
 
+export type ArticleAuthor = {
+  name: string;
+  /** 1-2 letter initials for the avatar circle. */
+  initials: string;
+  role: string;
+};
+
 export type Article = {
   slug: string;
   title: string;
@@ -25,6 +32,7 @@ export type Article = {
   publishedAt: string; // YYYY-MM-DD
   readingMinutes: number;
   body: string; // markdown-light: paragraphs separated by blank lines, h2 lines start with "## "
+  author?: ArticleAuthor;
   featured?: boolean;
 };
 

@@ -14,6 +14,12 @@ export const PlotSchema = z.object({
   features: z.array(z.string()),
 });
 
+export const ArticleAuthorSchema = z.object({
+  name: z.string().min(1),
+  initials: z.string().min(1).max(3),
+  role: z.string().min(1),
+});
+
 export const ArticleSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/, "slug must be lowercase ascii with dashes"),
   title: z.string().min(1),
@@ -23,6 +29,7 @@ export const ArticleSchema = z.object({
   publishedAt: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   readingMinutes: z.number().int().positive(),
   body: z.string().min(1),
+  author: ArticleAuthorSchema.optional(),
   featured: z.boolean().optional(),
 });
 

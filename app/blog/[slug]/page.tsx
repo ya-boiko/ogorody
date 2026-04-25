@@ -115,6 +115,16 @@ export default async function ArticlePage({
                   Подобрать участок
                 </Link>
               </div>
+
+              {article.author && (
+                <div className="author-card">
+                  <div className="author-avatar">{article.author.initials}</div>
+                  <div className="author-info">
+                    <strong>{article.author.name}</strong>
+                    <span>{article.author.role}</span>
+                  </div>
+                </div>
+              )}
             </aside>
           </div>
         </div>
