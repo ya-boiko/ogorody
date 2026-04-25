@@ -3,7 +3,7 @@
   "title": "Участок 8 соток у леса",
   "area": 8,
   "location": "Краснодарский край, 25 минут от центра Краснодара",
-  "pricePerSeason": 24000,
+  "pricePerMonth": 24000,
   "status": "available",
   "photos": [
     "/assets/plots/calm-1.jpg",

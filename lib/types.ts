@@ -5,7 +5,7 @@ export type Plot = {
   title: string;
   area: number;
   location: string;
-  pricePerSeason: number;
+  pricePerMonth: number;
   status: PlotStatus;
   photos: string[];
   description: string;

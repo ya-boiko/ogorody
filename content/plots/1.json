@@ -3,7 +3,7 @@
   "title": "Стартовый участок 3 сотки",
   "area": 3,
   "location": "Краснодарский край, 25 минут от центра Краснодара",
-  "pricePerSeason": 9000,
+  "pricePerMonth": 9000,
   "status": "available",
   "photos": [
     "/assets/plots/start-1.jpg",

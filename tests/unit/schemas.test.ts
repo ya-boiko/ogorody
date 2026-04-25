@@ -7,7 +7,7 @@ describe("PlotSchema", () => {
     title: "Участок 12 соток",
     area: 12,
     location: "Краснодарский край, ст. Это",
-    pricePerSeason: 90000,
+    pricePerMonth: 90000,
     status: "available",
     photos: ["/assets/plots/1/01.jpg"],
     description: "Описание участка.",
@@ -24,7 +24,7 @@ describe("PlotSchema", () => {
   });
 
   it("rejects negative price", () => {
-    expect(() => PlotSchema.parse({ ...validPlot, pricePerSeason: -1 })).toThrow();
+    expect(() => PlotSchema.parse({ ...validPlot, pricePerMonth: -1 })).toThrow();
   });
 
   it("rejects unknown status", () => {

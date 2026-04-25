@@ -3,7 +3,7 @@
   "title": "Большой участок 12 соток",
   "area": 12,
   "location": "Краснодарский край, 25 минут от центра Краснодара",
-  "pricePerSeason": 36000,
+  "pricePerMonth": 36000,
   "status": "booked",
   "photos": [
     "/assets/plots/big-1.jpg",

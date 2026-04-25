@@ -52,7 +52,7 @@ export async function PlotsPreview() {
                     {p.location.split(",").pop()?.trim()}
                   </span>
                   <span>
-                    <b>{formatPrice(p.pricePerSeason)}</b>/ месяц
+                    <b>{formatPrice(p.pricePerMonth)}</b>/ месяц
                   </span>
                 </div>
               </div>

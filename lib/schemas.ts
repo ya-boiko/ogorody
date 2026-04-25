@@ -5,7 +5,7 @@ export const PlotSchema = z.object({
   title: z.string().min(1),
   area: z.number().positive(),
   location: z.string().min(1),
-  pricePerSeason: z.number().nonnegative(),
+  pricePerMonth: z.number().nonnegative(),
   status: z.enum(["available", "booked", "sold"]),
   photos: z.array(z.string().min(1)).min(1),
   description: z.string(),

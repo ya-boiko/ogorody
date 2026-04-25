@@ -15,7 +15,7 @@ const valid = {
   title: "Тест",
   area: 6,
   location: "Где-то",
-  pricePerSeason: 50000,
+  pricePerMonth: 50000,
   status: "available",
   photos: ["/x.jpg"],
   description: "...",

@@ -3,7 +3,7 @@
   "title": "Угловой участок 5 соток",
   "area": 5,
   "location": "Краснодарский край, 25 минут от центра Краснодара",
-  "pricePerSeason": 15000,
+  "pricePerMonth": 15000,
   "status": "available",
   "photos": [
     "/assets/plots/first-1.jpg",
