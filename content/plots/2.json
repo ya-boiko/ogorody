@@ -1,9 +1,11 @@
 {
   "id": 2,
-  "title": "Семейный участок 6 соток",
-  "area": 6,
+  "title": "Для семьи",
+  "headline": "Комфортно приезжать",
+  "scenario": "Для семьи",
+  "area": 4,
   "location": "Краснодарский край, 25 минут от центра Краснодара",
-  "pricePerMonth": 18000,
+  "pricePerMonth": 6000,
   "status": "available",
   "photos": [
     "/assets/plots/family-1.jpg",

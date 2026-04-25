@@ -3,6 +3,10 @@ export type PlotStatus = "available" | "booked" | "sold";
 export type Plot = {
   id: number;
   title: string;
+  /** Short headline shown in card meta — e.g. "Легко начать", "Парковка рядом". */
+  headline: string;
+  /** Scenario label — also drives the catalog scenario filter. */
+  scenario: string;
   area: number;
   location: string;
   pricePerMonth: number;

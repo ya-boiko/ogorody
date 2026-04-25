@@ -26,13 +26,18 @@ export function PlotCard({ plot }: { plot: Plot }) {
   const status = STATUS_LABEL[plot.status];
   const cover = plot.photos[0];
   const ctaLabel = plot.status === "available" ? "Посмотреть формат" : "Оставить интерес";
-  const headline = plot.features[0] ?? plot.location.split(",").pop()?.trim() ?? "";
 
   return (
     <Link className="plot-card" href={`/catalog/${plot.id}`}>
       <div className="media">
         {cover && (
-          <Image src={cover} alt={plot.title} width={600} height={420} sizes="(max-width: 768px) 100vw, 33vw" />
+          <Image
+            src={cover}
+            alt={plot.title}
+            width={600}
+            height={420}
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         )}
       </div>
       <div className="body">
@@ -43,8 +48,9 @@ export function PlotCard({ plot }: { plot: Plot }) {
         <div className="meta">
           <span>{formatArea(plot.area)}</span>
           <span className="dot" />
-          <span>{headline}</span>
+          <span>{plot.headline}</span>
         </div>
+        <span className="scenario-tag">{plot.scenario}</span>
         <p className="price">
           от&nbsp;{formatPrice(plot.pricePerMonth)} <span>/&nbsp;мес</span>
         </p>

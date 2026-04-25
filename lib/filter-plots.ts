@@ -1,12 +1,4 @@
-import type { Plot, PlotStatus } from "./types";
-
-const STATUSES: PlotStatus[] = ["available", "booked", "sold"];
-
-const AREA_RANGES: Record<string, [number, number]> = {
-  "0-4": [0, 4],
-  "5-7": [5, 7],
-  "8+": [8, Infinity],
-};
+import type { Plot } from "./types";
 
 const SORTERS: Record<string, (a: Plot, b: Plot) => number> = {
   "price-asc": (a, b) => a.pricePerMonth - b.pricePerMonth,
@@ -16,22 +8,52 @@ const SORTERS: Record<string, (a: Plot, b: Plot) => number> = {
 };
 
 export type CatalogParams = {
-  status?: string;
+  scenario?: string;
   area?: string;
   sort?: string;
+  q?: string;
 };
+
+/**
+ * Convert a search-param area value to a [min, max] inclusive range.
+ * "3"/"4"/"5"/"6" → exact size. "8+" → 8..Infinity. Anything else → null.
+ */
+function parseAreaRange(value: string): [number, number] | null {
+  if (value.endsWith("+")) {
+    const min = Number(value.slice(0, -1));
+    if (!Number.isFinite(min)) return null;
+    return [min, Infinity];
+  }
+  const exact = Number(value);
+  if (!Number.isFinite(exact)) return null;
+  return [exact, exact];
+}
 
 export function filterAndSort(plots: Plot[], params: CatalogParams): Plot[] {
   let result = plots;
 
-  if (params.status && STATUSES.includes(params.status as PlotStatus)) {
-    const s = params.status as PlotStatus;
-    result = result.filter((p) => p.status === s);
+  if (params.scenario) {
+    result = result.filter((p) => p.scenario === params.scenario);
   }
 
-  if (params.area && AREA_RANGES[params.area]) {
-    const [min, max] = AREA_RANGES[params.area]!;
-    result = result.filter((p) => p.area >= min && p.area <= max);
+  if (params.area) {
+    const range = parseAreaRange(params.area);
+    if (range) {
+      const [min, max] = range;
+      result = result.filter((p) => p.area >= min && p.area <= max);
+    }
+  }
+
+  if (params.q) {
+    const q = params.q.trim().toLowerCase();
+    if (q) {
+      result = result.filter((p) => {
+        const haystack = [p.title, p.headline, p.scenario, p.location]
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(q);
+      });
+    }
   }
 
   if (params.sort && SORTERS[params.sort]) {
@@ -39,4 +61,11 @@ export function filterAndSort(plots: Plot[], params: CatalogParams): Plot[] {
   }
 
   return result;
+}
+
+/** Distinct scenario labels found in the data, in stable A→Z order. */
+export function listScenarios(plots: Plot[]): string[] {
+  return Array.from(new Set(plots.map((p) => p.scenario))).sort((a, b) =>
+    a.localeCompare(b, "ru"),
+  );
 }

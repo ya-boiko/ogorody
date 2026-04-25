@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PlotCard } from "@/components/catalog/PlotCard";
 import { PlotFilters } from "@/components/catalog/PlotFilters";
 import { getAllPlots } from "@/lib/plots";
-import { filterAndSort, type CatalogParams } from "@/lib/filter-plots";
+import { filterAndSort, listScenarios, type CatalogParams } from "@/lib/filter-plots";
 
 export const metadata: Metadata = {
   title: "Участки",
@@ -12,15 +12,17 @@ export const metadata: Metadata = {
 };
 
 type SearchParams = Promise<{
-  status?: string;
+  scenario?: string;
   area?: string;
   sort?: string;
+  q?: string;
 }>;
 
 export default async function CatalogPage({ searchParams }: { searchParams: SearchParams }) {
   const params = await searchParams;
   const all = await getAllPlots();
   const plots = filterAndSort(all, params as CatalogParams);
+  const scenarios = listScenarios(all);
 
   return (
     <>
@@ -52,7 +54,7 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
 
       <section className="filters">
         <div className="wrap">
-          <PlotFilters />
+          <PlotFilters scenarios={scenarios} />
         </div>
       </section>
 

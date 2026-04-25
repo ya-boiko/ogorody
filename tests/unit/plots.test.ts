@@ -13,6 +13,8 @@ vi.mock("server-only", () => ({}));
 const valid = {
   id: 42,
   title: "Тест",
+  headline: "Хорошее место",
+  scenario: "Новичкам",
   area: 6,
   location: "Где-то",
   pricePerMonth: 50000,

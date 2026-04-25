@@ -5,6 +5,8 @@ describe("PlotSchema", () => {
   const validPlot = {
     id: 1,
     title: "Участок 12 соток",
+    headline: "Подходит для семьи",
+    scenario: "Для семьи",
     area: 12,
     location: "Краснодарский край, ст. Это",
     pricePerMonth: 90000,

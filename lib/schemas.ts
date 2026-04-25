@@ -3,6 +3,8 @@ import { z } from "zod";
 export const PlotSchema = z.object({
   id: z.number().int().positive(),
   title: z.string().min(1),
+  headline: z.string().min(1),
+  scenario: z.string().min(1),
   area: z.number().positive(),
   location: z.string().min(1),
   pricePerMonth: z.number().nonnegative(),
