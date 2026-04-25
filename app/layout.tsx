@@ -21,13 +21,22 @@ const manrope = localFont({
   display: "swap",
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ogorody.example";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Огороды — Свой урожай без дачной рутины",
     template: "%s — Огороды",
   },
   description:
     "Готовые участки в Краснодарском крае: рента, посадка, уход и контроль через приложение.",
+  openGraph: {
+    type: "website",
+    locale: "ru_RU",
+    siteName: "Огороды",
+    images: [{ url: "/assets/hero.jpg", width: 1200, height: 630, alt: "Огороды" }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
