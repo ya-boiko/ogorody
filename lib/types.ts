@@ -41,10 +41,14 @@ export type NewsItem = {
 
 export type LeadSource = "main" | "catalog" | "plot" | "contacts";
 
+export type CareFormat = "self" | "supported" | "managed";
+
 export type Lead = {
   name: string;
   phone: string;
   message?: string;
+  email?: string;
+  careFormat?: CareFormat;
   source: LeadSource;
   plotId?: number;
 };

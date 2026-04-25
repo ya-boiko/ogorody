@@ -41,6 +41,8 @@ export const LeadSchema = z.object({
   name: z.string().min(2).max(100),
   phone: z.string().regex(/^(\+7|8)[\s\-()]*\d[\s\-()]*\d{2}.*$/),
   message: z.string().max(2000).optional(),
+  email: z.string().email().optional(),
+  careFormat: z.enum(["self", "supported", "managed"]).optional(),
   source: z.enum(["main", "catalog", "plot", "contacts"]),
   plotId: z.number().int().positive().optional(),
 });

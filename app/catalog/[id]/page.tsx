@@ -3,7 +3,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PlotCard } from "@/components/catalog/PlotCard";
 import { PlotGallery } from "@/components/catalog/PlotGallery";
-import { LeadForm } from "@/components/leads/LeadForm";
+import { PlotInlineForm } from "@/components/catalog/PlotInlineForm";
+import { PlotSpecs } from "@/components/catalog/PlotSpecs";
+import { PlotWhyTiles } from "@/components/catalog/PlotWhyTiles";
 import { getAllPlots, getPlotById } from "@/lib/plots";
 import type { Plot } from "@/lib/types";
 
@@ -147,6 +149,10 @@ export default async function PlotPage({ params }: { params: Promise<{ id: strin
             <p className="why-lede">{plot.description}</p>
           </div>
 
+          <PlotWhyTiles />
+
+          <PlotSpecs />
+
           {plot.features.length > 0 && (
             <div className="included">
               <div className="included-head">
@@ -176,20 +182,14 @@ export default async function PlotPage({ params }: { params: Promise<{ id: strin
         </div>
       </section>
 
-      <section className="contact-main" style={{ padding: "0 0 64px" }}>
+      <section className="plot-form">
         <div className="wrap">
-          <div className="form-card">
-            <h2>Записаться на&nbsp;просмотр</h2>
-            <p className="lede">
-              Расскажите немного о&nbsp;себе&nbsp;— подберём формат ухода и&nbsp;перезвоним
-              в&nbsp;течение часа.
-            </p>
-            <LeadForm source="plot" plotId={plot.id} />
-            <p className="privacy" style={{ marginTop: 16 }}>
-              Нажимая «Записаться», вы&nbsp;соглашаетесь с&nbsp;политикой обработки
-              персональных данных.
-            </p>
-          </div>
+          <h2>
+            Посмотреть участок и&nbsp;выбрать
+            <br />
+            формат ухода
+          </h2>
+          <PlotInlineForm plotId={plot.id} />
         </div>
       </section>
 
