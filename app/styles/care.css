@@ -1,0 +1,265 @@
+  /* HERO — plot-hero pattern */
+  .help-hero-section {
+    padding: 12px 0 56px;
+    background: var(--bg);
+  }
+  .help-hero-section .layout {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .help-hero-section .hero-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .help-hero-section .hero-info { display: flex; flex-direction: column; gap: 20px; }
+  .help-hero-section .help-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    padding: 6px 12px;
+    background: rgba(200, 85, 61, 0.08);
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .help-hero-section .help-tag::before {
+    content: ""; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .help-hero-section h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    margin: 0;
+    text-wrap: balance;
+  }
+  .help-hero-section .hero-lede {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--primary-ink);
+    margin: 0;
+  }
+
+  /* Three formats — like plot-card */
+  .formats-section { padding: 0 0 80px; background: var(--bg); }
+  .formats-header {
+    display: flex; flex-direction: column; gap: 12px;
+    text-align: center; margin-bottom: 36px;
+  }
+  .formats-header h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--primary);
+    margin: 0;
+  }
+  .formats-header p {
+    font-size: 16px; line-height: 1.6;
+    color: var(--primary-ink);
+    max-width: 640px; margin: 0 auto;
+  }
+  .formats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+  .format-card {
+    background: var(--card);
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    display: flex; flex-direction: column; gap: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 200ms, box-shadow 200ms;
+  }
+  .format-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .format-card.featured { background: var(--primary); color: var(--bg); }
+  .format-card .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500;
+    color: var(--accent);
+    padding: 5px 11px;
+    background: rgba(200, 85, 61, 0.08);
+    border-radius: 999px;
+    align-self: flex-start;
+  }
+  .format-card .badge::before {
+    content: ""; width: 5px; height: 5px;
+    border-radius: 50%; background: var(--accent);
+  }
+  .format-card.featured .badge {
+    background: rgba(250,247,240,0.15);
+    color: var(--bg);
+  }
+  .format-card.featured .badge::before { background: var(--bg); }
+  .format-card h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--primary);
+    margin: 0;
+  }
+  .format-card.featured h3 { color: var(--bg); }
+  .format-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--primary-ink);
+    margin: 0;
+    flex: 1;
+  }
+  .format-card.featured p { color: rgba(250,247,240,0.8); }
+  .format-card .price {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    color: var(--primary);
+    margin-top: 4px;
+  }
+  .format-card.featured .price { color: var(--bg); }
+  .format-card .price small {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .format-card.featured .price small { color: rgba(250,247,240,0.6); }
+  .format-card .cta-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 14px; font-weight: 500;
+    color: var(--primary);
+    text-decoration: none;
+    margin-top: 8px;
+  }
+  .format-card.featured .cta-link { color: var(--bg); }
+  .format-card .cta-link:hover { gap: 12px; transition: gap 150ms; }
+
+  /* Services — three columns with scenario-list style */
+  .services-block {
+    padding: 80px 0;
+    background: var(--surface-green);
+  }
+  .services-block h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--primary);
+    margin: 0 0 12px;
+    text-align: center;
+  }
+  .services-block .lede {
+    font-size: 16px; line-height: 1.6;
+    color: var(--primary-ink);
+    text-align: center;
+    max-width: 640px; margin: 0 auto 48px;
+  }
+  .services-block .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+  }
+  .service-col h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--primary);
+    margin: 0 0 18px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(27,58,40,0.15);
+  }
+  .service-col ul {
+    margin: 0; padding: 0; list-style: none;
+    display: flex; flex-direction: column; gap: 0;
+  }
+  .service-col li {
+    position: relative;
+    padding: 12px 0 12px 28px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--primary-ink);
+    border-bottom: 1px solid rgba(27,58,40,0.08);
+  }
+  .service-col li:last-child { border-bottom: 0; }
+  .service-col li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 16px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--bg);
+  }
+  .service-col li::after {
+    content: "✓";
+    position: absolute;
+    left: 3px; top: 11px;
+    color: var(--primary);
+    font-size: 10px;
+    font-weight: 700;
+  }
+
+  /* Final CTA */
+  .help-cta {
+    background: var(--primary);
+    color: var(--bg);
+    padding: 80px 0;
+  }
+  .help-cta .layout {
+    max-width: 720px; margin: 0 auto; text-align: center;
+  }
+  .help-cta h2 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--bg);
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .help-cta p {
+    font-size: 16px; line-height: 1.55;
+    color: rgba(250,247,240,0.78);
+    margin: 0 0 32px;
+  }
+  .help-cta .actions {
+    display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  }
+  .help-cta button {
+    padding: 16px 32px;
+    border-radius: var(--radius-sm);
+    border: 0;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 150ms, color 150ms;
+  }
+  .help-cta .btn-light {
+    background: var(--bg); color: var(--primary);
+  }
+  .help-cta .btn-light:hover { background: var(--secondary); }
+  .help-cta .btn-outline {
+    background: transparent;
+    color: var(--bg);
+    box-shadow: inset 0 0 0 1px rgba(250,247,240,0.5);
+  }
+  .help-cta .btn-outline:hover { background: rgba(250,247,240,0.1); }
+  .help-cta .note {
+    margin-top: 18px;
+    font-size: 13px;
+    color: rgba(250,247,240,0.5);
+  }

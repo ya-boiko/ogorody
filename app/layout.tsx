@@ -8,6 +8,8 @@ import "./styles/sections-b.css";
 import "./styles/sections-c.css";
 import "./styles/catalog.css";
 import "./styles/contacts.css";
+import "./styles/care.css";
+import "./styles/about.css";
 import "./styles/lead-form.css";
 
 const manrope = localFont({
