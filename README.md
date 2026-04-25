@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Огороды — site
 
-## Getting Started
+Next.js (App Router) реализация прототипа из `../design/`.
 
-First, run the development server:
+## Стек
+
+- Node 22 LTS, pnpm
+- Next.js 16 (App Router, Turbopack), React 19, TypeScript strict
+- Zod — валидация форм и контента
+- Vitest + Testing Library — юнит и компонент-тесты
+- Playwright — E2E
+
+## Локальный запуск
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Тесты и проверки
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm typecheck
+pnpm lint
+pnpm test         # юнит + компонент (~30 тестов)
+pnpm test:e2e     # Playwright (Chromium)
+pnpm format:check
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Сборка
 
-## Learn More
+```bash
+pnpm build
+pnpm start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Структура
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+├─ layout.tsx                      # html lang=ru, шрифты, глобальный CSS, Nav + Footer
+├─ page.tsx                        # /
+├─ catalog/
+│  ├─ page.tsx                     # /catalog
+│  └─ [id]/page.tsx                # /catalog/<id>
+├─ contacts/page.tsx               # /contacts
+├─ api/leads/route.ts              # POST /api/leads (stub)
+├─ sitemap.ts, robots.ts           # SEO
+├─ not-found.tsx                   # 404
+└─ styles/                         # глобальные CSS из дизайн-системы
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+components/
+├─ nav, footer                     # шапка/подвал
+├─ hero, pillars, day, places,     # секции лэндинга
+│  care, watch, community,
+│  harvest, plots-preview, final
+├─ catalog/                        # PlotCard, PlotFilters (client),
+│                                  # PlotGallery (client)
+└─ leads/LeadForm.tsx              # форма заявки (client)
 
-## Deploy on Vercel
+content/plots/*.json               # mock-данные участков (6 шт)
+lib/                               # типы, Zod-схемы, plot loader, leads stub
+public/assets/                     # лого, hero, фото участков
+public/fonts/                      # Manrope WOFF2 (cyrillic, 4 веса)
+tests/                             # unit / components / e2e
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Статус фазы 1
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Реализовано:
+- Лэндинг (10 секций, перенесён 1-в-1 из прототипа)
+- Каталог + страница участка (с галереей, фильтрами, статической генерацией)
+- Контакты + форма заявки
+- API-route `/api/leads` (stub: логирует payload и возвращает 200)
+- SEO: per-page metadata, sitemap, robots, 404
+
+Отложено в backlog (см. `../docs/superpowers/specs/2026-04-25-react-migration-phase-1-design.md`):
+- Доставка лидов (email / Telegram / CRM)
+- Хостинг (Vercel vs российский VPS)
+- Страницы `/care`, `/about`, блог, новости — фаза 2/3
+- Аналитика (Яндекс.Метрика, GA), Sentry, мониторинг
