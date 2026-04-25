@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PlotCard } from "@/components/catalog/PlotCard";
 import { PlotGallery } from "@/components/catalog/PlotGallery";
+import { LeadForm } from "@/components/leads/LeadForm";
 import { getAllPlots, getPlotById } from "@/lib/plots";
 import type { Plot } from "@/lib/types";
 
@@ -172,6 +173,23 @@ export default async function PlotPage({ params }: { params: Promise<{ id: strin
               </ul>
             </div>
           )}
+        </div>
+      </section>
+
+      <section className="contact-main" style={{ padding: "0 0 64px" }}>
+        <div className="wrap">
+          <div className="form-card">
+            <h2>Записаться на&nbsp;просмотр</h2>
+            <p className="lede">
+              Расскажите немного о&nbsp;себе&nbsp;— подберём формат ухода и&nbsp;перезвоним
+              в&nbsp;течение часа.
+            </p>
+            <LeadForm source="plot" plotId={plot.id} />
+            <p className="privacy" style={{ marginTop: 16 }}>
+              Нажимая «Записаться», вы&nbsp;соглашаетесь с&nbsp;политикой обработки
+              персональных данных.
+            </p>
+          </div>
         </div>
       </section>
 

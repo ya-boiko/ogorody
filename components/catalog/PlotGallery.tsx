@@ -32,11 +32,19 @@ export function PlotGallery({ photos, alt }: PlotGalleryProps) {
             <button
               type="button"
               key={photo}
-              className={i === active ? "active" : undefined}
               onClick={() => setActive(i)}
               aria-label={`Показать фото ${i + 1}`}
+              style={{
+                display: "contents",
+              }}
             >
-              <Image src={photo} alt="" width={200} height={140} />
+              <Image
+                src={photo}
+                alt=""
+                width={200}
+                height={140}
+                className={i === active ? "active" : undefined}
+              />
             </button>
           ))}
         </div>
