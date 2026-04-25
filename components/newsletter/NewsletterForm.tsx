@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { subscribeToNewsletter } from "@/lib/newsletter-client";
 
 type FormState =
   | { kind: "idle" }
@@ -19,12 +20,7 @@ export function NewsletterForm({ source }: { source: "blog" | "news" }) {
     }
     setState({ kind: "submitting" });
     try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, source }),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await subscribeToNewsletter({ email, source });
       setState({ kind: "success" });
     } catch (err) {
       setState({

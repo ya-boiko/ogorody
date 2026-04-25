@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { getAllPlots } from "@/lib/plots";
 import { getAllArticles, getAllNews } from "@/lib/content";
 
+export const dynamic = "force-static";
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://ogorody.example";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

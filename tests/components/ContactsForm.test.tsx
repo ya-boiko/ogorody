@@ -1,12 +1,18 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
+const { submitMock } = vi.hoisted(() => ({ submitMock: vi.fn() }));
+
+vi.mock("@/lib/lead-client", () => ({
+  submitLead: submitMock,
+}));
+
 import { ContactsForm } from "@/components/leads/ContactsForm";
 
-const fetchMock = vi.fn();
 beforeEach(() => {
-  fetchMock.mockReset();
-  globalThis.fetch = fetchMock as unknown as typeof fetch;
+  submitMock.mockReset();
+  submitMock.mockResolvedValue({ ok: true });
 });
 
 describe("ContactsForm", () => {
@@ -21,7 +27,6 @@ describe("ContactsForm", () => {
   });
 
   it("submits with email when provided", async () => {
-    fetchMock.mockResolvedValueOnce({ ok: true, json: async () => ({ ok: true }) });
     const user = userEvent.setup();
     render(<ContactsForm />);
     await user.type(screen.getByLabelText(/Имя/), "Иван Петров");
@@ -29,14 +34,15 @@ describe("ContactsForm", () => {
     await user.type(screen.getByLabelText(/Email/), "ivan@example.com");
     await user.click(screen.getByRole("button", { name: /Отправить заявку/ }));
 
-    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
-    const body = JSON.parse(fetchMock.mock.calls[0]![1]!.body as string);
-    expect(body).toMatchObject({
-      name: "Иван Петров",
-      phone: "+7 861 000 00 00",
-      email: "ivan@example.com",
-      source: "contacts",
-    });
+    await waitFor(() => expect(submitMock).toHaveBeenCalledTimes(1));
+    expect(submitMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        name: "Иван Петров",
+        phone: "+7 861 000 00 00",
+        email: "ivan@example.com",
+        source: "contacts",
+      }),
+    );
   });
 
   it("rejects malformed email", async () => {
@@ -47,6 +53,6 @@ describe("ContactsForm", () => {
     await user.type(screen.getByLabelText(/Email/), "not-an-email");
     await user.click(screen.getByRole("button", { name: /Отправить заявку/ }));
     expect(await screen.findByText(/Введите корректный email/)).toBeInTheDocument();
-    expect(fetchMock).not.toHaveBeenCalled();
+    expect(submitMock).not.toHaveBeenCalled();
   });
 });

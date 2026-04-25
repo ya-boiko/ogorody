@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitLead } from "@/lib/lead-client";
 import { LeadSchema } from "@/lib/schemas";
 
 type FormState =
@@ -44,12 +45,7 @@ export function PlotInlineForm({ plotId }: { plotId: number }) {
     setFieldError({});
     setState({ kind: "submitting" });
     try {
-      const res = await fetch("/api/leads", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validation.data),
-      });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      await submitLead(validation.data);
       setState({ kind: "success" });
     } catch (err) {
       setState({

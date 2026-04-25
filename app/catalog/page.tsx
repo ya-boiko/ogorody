@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { PlotCard } from "@/components/catalog/PlotCard";
-import { PlotFilters } from "@/components/catalog/PlotFilters";
+import { Suspense } from "react";
+import { CatalogList } from "@/components/catalog/CatalogList";
 import { getAllPlots } from "@/lib/plots";
-import { filterAndSort, listScenarios, type CatalogParams } from "@/lib/filter-plots";
+import { listScenarios } from "@/lib/filter-plots";
 
 export const metadata: Metadata = {
   title: "Участки",
@@ -11,18 +11,9 @@ export const metadata: Metadata = {
     "Каталог готовых участков под ключ в Краснодарском крае: фотографии, площадь, цена за месяц аренды.",
 };
 
-type SearchParams = Promise<{
-  scenario?: string;
-  area?: string;
-  sort?: string;
-  q?: string;
-}>;
-
-export default async function CatalogPage({ searchParams }: { searchParams: SearchParams }) {
-  const params = await searchParams;
-  const all = await getAllPlots();
-  const plots = filterAndSort(all, params as CatalogParams);
-  const scenarios = listScenarios(all);
+export default async function CatalogPage() {
+  const plots = await getAllPlots();
+  const scenarios = listScenarios(plots);
 
   return (
     <>
@@ -52,27 +43,9 @@ export default async function CatalogPage({ searchParams }: { searchParams: Sear
         </div>
       </section>
 
-      <section className="filters">
-        <div className="wrap">
-          <PlotFilters scenarios={scenarios} />
-        </div>
-      </section>
-
-      <section className="catalog">
-        <div className="wrap">
-          {plots.length === 0 ? (
-            <p style={{ padding: "32px 0", color: "var(--text-muted)" }}>
-              Под выбранные фильтры участков пока нет — попробуйте изменить параметры.
-            </p>
-          ) : (
-            <div className="grid">
-              {plots.map((plot) => (
-                <PlotCard key={plot.id} plot={plot} />
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+      <Suspense fallback={null}>
+        <CatalogList plots={plots} scenarios={scenarios} />
+      </Suspense>
     </>
   );
 }
