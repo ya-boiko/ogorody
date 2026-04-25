@@ -19,7 +19,8 @@ describe("PlotSchema", () => {
   });
 
   it("rejects missing id", () => {
-    const { id: _id, ...invalid } = validPlot;
+    const { id, ...invalid } = validPlot;
+    void id;
     expect(() => PlotSchema.parse(invalid)).toThrow();
   });
 

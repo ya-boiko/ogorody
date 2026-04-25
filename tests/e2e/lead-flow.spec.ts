@@ -10,8 +10,10 @@ test("user browses landing → catalog → plot → submits lead", async ({ page
   await expect(page.locator(".plot-card").first()).toBeVisible();
 
   // Open first plot
-  await page.locator(".plot-card").first().click();
-  await expect(page).toHaveURL(/\/catalog\/\d+$/);
+  const firstCard = page.locator("a.plot-card").first();
+  await firstCard.waitFor({ state: "visible" });
+  await firstCard.click();
+  await page.waitForURL(/\/catalog\/\d+$/, { timeout: 10_000 });
   await expect(page.locator(".lead-form")).toBeVisible();
 
   // Fill form and submit

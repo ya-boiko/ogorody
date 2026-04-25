@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PlotCard } from "@/components/catalog/PlotCard";
 import { PlotFilters } from "@/components/catalog/PlotFilters";
-import { Footer } from "@/components/footer/Footer";
-import { Nav } from "@/components/nav/Nav";
 import { getAllPlots } from "@/lib/plots";
 import { filterAndSort, type CatalogParams } from "@/lib/filter-plots";
 
