@@ -14,7 +14,8 @@ test("user browses landing → catalog → plot → submits lead", async ({ page
   await firstCard.waitFor({ state: "visible" });
   await firstCard.click();
   await page.waitForURL(/\/catalog\/\d+$/, { timeout: 10_000 });
-  await expect(page.locator(".lead-form")).toBeVisible();
+  // Plot detail page now uses native .plot-form with form.form
+  await expect(page.locator("section.plot-form form.form")).toBeVisible();
 
   // Fill form and submit
   await page.getByLabel("Имя").fill("Иван Петров");
