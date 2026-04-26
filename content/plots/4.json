@@ -8,9 +8,9 @@
   "pricePerMonth": 5000,
   "status": "booked",
   "photos": [
-    "/assets/plots/start-1.jpg",
-    "/assets/plots/start-2.jpg",
-    "/assets/plots/start-3.jpg"
+    "/ogorody/assets/plots/start-1.jpg",
+    "/ogorody/assets/plots/start-2.jpg",
+    "/ogorody/assets/plots/start-3.jpg"
   ],
   "description": "Уже забронирован на сезон 2026, но место освобождается в августе — оставьте интерес и мы предупредим. Хорош для тех, кто хочет начать с малого и быстро.",
   "features": [

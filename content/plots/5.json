@@ -8,9 +8,9 @@
   "pricePerMonth": 10000,
   "status": "available",
   "photos": [
-    "/assets/plots/big-1.jpg",
-    "/assets/plots/big-2.jpg",
-    "/assets/plots/big-3.jpg"
+    "/ogorody/assets/plots/big-1.jpg",
+    "/ogorody/assets/plots/big-2.jpg",
+    "/ogorody/assets/plots/big-3.jpg"
   ],
   "description": "Просторный участок: грядки, ягодные кустарники, плодовые деревья и место под зону отдыха. Можно делить заботы между двумя–тремя семьями или взять на одного увлечённого огородника.",
   "features": [

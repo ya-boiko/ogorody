@@ -8,9 +8,9 @@
   "pricePerMonth": 8500,
   "status": "available",
   "photos": [
-    "/assets/plots/third-1.jpg",
-    "/assets/plots/third-2.jpg",
-    "/assets/plots/third-3.jpg"
+    "/ogorody/assets/plots/third-1.jpg",
+    "/ogorody/assets/plots/third-2.jpg",
+    "/ogorody/assets/plots/third-3.jpg"
   ],
   "description": "Удобный участок у въезда в клуб — подъехать на машине и быстро добраться до грядок. Подходит, если планируете делить заботы с друзьями или коллегами.",
   "features": [

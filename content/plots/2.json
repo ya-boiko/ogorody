@@ -8,9 +8,9 @@
   "pricePerMonth": 6000,
   "status": "available",
   "photos": [
-    "/assets/plots/family-1.jpg",
-    "/assets/plots/family-2.jpg",
-    "/assets/plots/family-3.jpg"
+    "/ogorody/assets/plots/family-1.jpg",
+    "/ogorody/assets/plots/family-2.jpg",
+    "/ogorody/assets/plots/family-3.jpg"
   ],
   "description": "Размер для семьи с детьми. Грядки, мини-теплица, рядом — детская площадка и спуск к речке. Идеально, чтобы приезжать на выходные всем составом.",
   "features": [

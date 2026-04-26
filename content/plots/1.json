@@ -8,9 +8,9 @@
   "pricePerMonth": 3500,
   "status": "available",
   "photos": [
-    "/assets/plots/first-1.jpg",
-    "/assets/plots/first-2.jpg",
-    "/assets/plots/first-3.jpg"
+    "/ogorody/assets/plots/first-1.jpg",
+    "/ogorody/assets/plots/first-2.jpg",
+    "/ogorody/assets/plots/first-3.jpg"
   ],
   "description": "Минимальный участок для тех, кто пробует свой первый сезон. Всё уже подготовлено: вспаханная земля, размечены 4 грядки, шланг для полива и доступ к общему складу с инструментом.",
   "features": [

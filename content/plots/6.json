@@ -8,9 +8,9 @@
   "pricePerMonth": 7500,
   "status": "booked",
   "photos": [
-    "/assets/plots/calm-1.jpg",
-    "/assets/plots/calm-2.jpg",
-    "/assets/plots/calm-3.jpg"
+    "/ogorody/assets/plots/calm-1.jpg",
+    "/ogorody/assets/plots/calm-2.jpg",
+    "/ogorody/assets/plots/calm-3.jpg"
   ],
   "description": "Подходит, если хочется спокойствия без обязательств. Сейчас команда полностью ведёт участок: посадка, полив, прополка, сбор. Вы приезжаете уже к готовому урожаю.",
   "features": [
