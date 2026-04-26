@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { NewsCard } from "@/components/content/NewsCard";
 import { RichBody } from "@/components/content/RichBody";
-import { asset } from "@/lib/asset";
+import { asset, unprefix } from "@/lib/asset";
 import { getAllNews, getNewsBySlug } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
@@ -27,7 +27,7 @@ export async function generateMetadata({
     openGraph: {
       title: item.title,
       description: item.excerpt,
-      images: [{ url: asset(item.cover) }],
+      images: [{ url: unprefix(item.cover) }],
       type: "article",
       publishedTime: item.publishedAt,
     },

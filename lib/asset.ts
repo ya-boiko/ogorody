@@ -18,3 +18,15 @@ export function asset(path: string): string {
   if (PREFIX && path.startsWith(`${PREFIX}/`)) return path;
   return `${PREFIX}${path}`;
 }
+
+/**
+ * Inverse of asset(): strip the deployment basePath if present.
+ * Used for og:image URLs in metadata exports — Next.js's metadataBase
+ * prepends its pathname via concatenation (not URL resolution), so we must
+ * pass the raw "/assets/..." form and let metadataBase handle the prefix.
+ */
+export function unprefix(path: string): string {
+  if (!path || !path.startsWith("/")) return path;
+  if (PREFIX && path.startsWith(`${PREFIX}/`)) return path.slice(PREFIX.length);
+  return path;
+}

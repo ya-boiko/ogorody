@@ -4,7 +4,7 @@ import path from "node:path";
 import { cache } from "react";
 import type { Metadata } from "next";
 import { z } from "zod";
-import { asset } from "./asset";
+import { unprefix } from "./asset";
 
 const SEO_DIR = path.resolve(process.cwd(), "content/seo");
 
@@ -69,7 +69,7 @@ export function seoToMetadata(seo: SeoConfig): Metadata {
     openGraph: {
       title: seo.title,
       description: seo.description,
-      ...(seo.ogImage ? { images: [{ url: asset(seo.ogImage) }] } : {}),
+      ...(seo.ogImage ? { images: [{ url: unprefix(seo.ogImage) }] } : {}),
     },
   };
 }

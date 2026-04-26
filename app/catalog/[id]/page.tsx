@@ -6,7 +6,7 @@ import { PlotGallery } from "@/components/catalog/PlotGallery";
 import { PlotInlineForm } from "@/components/catalog/PlotInlineForm";
 import { PlotSpecs } from "@/components/catalog/PlotSpecs";
 import { PlotWhyTiles } from "@/components/catalog/PlotWhyTiles";
-import { asset } from "@/lib/asset";
+import { unprefix } from "@/lib/asset";
 import { getAllPlots, getPlotById } from "@/lib/plots";
 import type { Plot } from "@/lib/types";
 
@@ -48,7 +48,7 @@ export async function generateMetadata({
     openGraph: {
       title: plot.title,
       description: plot.description.slice(0, 160),
-      images: plot.photos[0] ? [{ url: asset(plot.photos[0]) }] : undefined,
+      images: plot.photos[0] ? [{ url: unprefix(plot.photos[0]) }] : undefined,
     },
   };
 }
