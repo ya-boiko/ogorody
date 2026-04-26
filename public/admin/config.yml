@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ya-boiko/ogorody
   branch: main
-  base_url: https://ogorody-decap-oauth.workers.dev
+  base_url: https://ogorody-decap-oauth.ogorody.workers.dev
 
 # Где Decap сохраняет загруженные через image-widget файлы
 media_folder: site/public/assets/uploads
