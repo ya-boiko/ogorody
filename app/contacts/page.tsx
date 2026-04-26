@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ContactsForm } from "@/components/leads/ContactsForm";
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Контакты",
-  description:
-    "Свяжитесь с командой «Огороды» — позвоним, ответим на вопросы и пригласим на просмотр участка.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("contacts"));
+}
 
 export default function ContactsPage() {
   return (

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { asset } from "@/lib/asset";
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Помощь в уходе",
-  description:
-    "Три формата участия и разовые услуги: огород под ключ, команда помогает, сам себе агроном. Выбирайте, сколько работы делаете вы.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("care"));
+}
 
 const ARROW = (
   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">

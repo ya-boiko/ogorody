@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
 import { Hero } from "@/components/hero/Hero";
 import { Pillars } from "@/components/pillars/Pillars";
 import { DayTimeline } from "@/components/day/DayTimeline";
@@ -8,6 +10,10 @@ import { Community } from "@/components/community/Community";
 import { Harvest } from "@/components/harvest/Harvest";
 import { PlotsPreview } from "@/components/plots-preview/PlotsPreview";
 import { FinalCta } from "@/components/final/FinalCta";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("main"));
+}
 
 export default function HomePage() {
   return (

@@ -5,7 +5,7 @@ backend:
   base_url: https://ogorody-decap-oauth.ogorody.workers.dev
 
 # Где Decap сохраняет загруженные через image-widget файлы
-media_folder: site/public/assets/uploads
+media_folder: public/assets/uploads
 # URL-путь, который попадает в JSON. Вшиваем basePath /ogorody —
 # совпадает с deployment URL. lib/asset.ts идемпотентен и не дублирует префикс.
 public_folder: /ogorody/assets/uploads
@@ -18,7 +18,7 @@ collections:
   - name: plots
     label: Участки
     label_singular: Участок
-    folder: site/content/plots
+    folder: content/plots
     create: true
     delete: true
     extension: json
@@ -59,7 +59,7 @@ collections:
   - name: articles
     label: Статьи блога
     label_singular: Статья
-    folder: site/content/articles
+    folder: content/articles
     create: true
     delete: true
     extension: json
@@ -93,10 +93,42 @@ collections:
         widget: text
         hint: 'Абзацы разделяются пустой строкой. Подзаголовки начинаются с «## ».'
 
+  - name: seo
+    label: SEO страниц
+    delete: false
+    files:
+      - file: content/seo/main.json
+        label: Главная
+        name: main
+        fields: &seo_fields
+          - { name: title, label: Title (вкладка браузера + заголовок в выдаче), widget: string }
+          - { name: description, label: Description (текст под заголовком в выдаче), widget: text, hint: 'Рекомендуемая длина 120–160 символов' }
+          - { name: ogImage, label: OG-image (картинка для соцсетей), widget: image, required: false }
+      - file: content/seo/care.json
+        label: Помощь в уходе
+        name: care
+        fields: *seo_fields
+      - file: content/seo/about.json
+        label: О проекте
+        name: about
+        fields: *seo_fields
+      - file: content/seo/contacts.json
+        label: Контакты
+        name: contacts
+        fields: *seo_fields
+      - file: content/seo/blog.json
+        label: Блог (список)
+        name: blog
+        fields: *seo_fields
+      - file: content/seo/news.json
+        label: Новости (список)
+        name: news_seo
+        fields: *seo_fields
+
   - name: news
     label: Новости
     label_singular: Новость
-    folder: site/content/news
+    folder: content/news
     create: true
     delete: true
     extension: json

@@ -7,11 +7,11 @@ import { asset } from "@/lib/asset";
 import { getAllNews } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
-export const metadata: Metadata = {
-  title: "Новости",
-  description:
-    "События сезона, новые сервисы и обновления клуба «Огороды» в Краснодарском крае.",
-};
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("news"));
+}
 
 const FILTERS = [
   "Все новости",

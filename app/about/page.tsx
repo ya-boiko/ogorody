@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { asset } from "@/lib/asset";
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "О проекте",
-  description:
-    "Загородный сервис «Огороды» в Краснодарском крае — почему появился, как устроен, кто в команде. Своя земля без дачной рутины.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("about"));
+}
 
 const VALUES = [
   {

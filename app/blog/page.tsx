@@ -7,11 +7,11 @@ import { asset } from "@/lib/asset";
 import { getAllArticles } from "@/lib/content";
 import { formatRuDate } from "@/lib/format-date";
 
-export const metadata: Metadata = {
-  title: "Блог",
-  description:
-    "Полезные статьи о выращивании овощей: советы агрономов, истории участников и практические лайфхаки сезонного огорода.",
-};
+import { getPageSeo, seoToMetadata } from "@/lib/seo";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return seoToMetadata(await getPageSeo("blog"));
+}
 
 const TOPICS = [
   "Все темы",
