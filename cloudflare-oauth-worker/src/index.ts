@@ -100,18 +100,30 @@ function renderClose(error: string | null, token: string | null, env: Env): Resp
 <body><script>
 (function () {
   var data = ${json};
-  var msg = "authorization:github:${status}:" + JSON.stringify(data);
-  function post(target) {
+  var target = ${JSON.stringify(target)};
+  var finalMsg = "authorization:github:${status}:" + JSON.stringify(data);
+
+  // Decap CMS uses the netlify-cms two-step handshake:
+  //   1) popup posts "authorizing:github" to opener with "*"
+  //   2) opener replies with "authorizing:github" (cue that listener is wired)
+  //   3) popup posts "authorization:github:<status>:<payload>" with opener's origin
+  function receive(e) {
+    if (typeof e.data !== "string") return;
+    if (e.data.indexOf("authorizing:github") !== 0) return;
     if (window.opener && !window.opener.closed) {
-      window.opener.postMessage(msg, target);
+      window.opener.postMessage(finalMsg, e.origin || target);
     }
+    window.removeEventListener("message", receive, false);
+    setTimeout(function () { window.close(); }, 200);
   }
-  function send() {
-    post(${JSON.stringify(target)});
-    setTimeout(function () { window.close(); }, 100);
+
+  window.addEventListener("message", receive, false);
+
+  if (window.opener && !window.opener.closed) {
+    // Step 1 announcement uses "*" because we don't yet know the opener's origin
+    // for sure; the opener echoes back, and step 3 uses e.origin for token send.
+    window.opener.postMessage("authorizing:github", "*");
   }
-  // Decap subscribes after popup loads, so wait a tick before posting.
-  setTimeout(send, 50);
 })();
 </script></body></html>`;
 
