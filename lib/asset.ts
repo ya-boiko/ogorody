@@ -11,12 +11,17 @@
  * Locally it defaults to "" so paths resolve from "/".
  */
 const PREFIX = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+// Content authored through Decap stores absolute paths that include the
+// production basePath (`/ogorody`). Strip it before re-applying PREFIX so
+// the same content renders correctly in dev (PREFIX="") and in prod.
+const LEGACY_PREFIX = "/ogorody";
 
 export function asset(path: string): string {
   if (!path) return path;
   if (!path.startsWith("/")) return path;
-  if (PREFIX && path.startsWith(`${PREFIX}/`)) return path;
-  return `${PREFIX}${path}`;
+  let p = path;
+  if (p.startsWith(`${LEGACY_PREFIX}/`)) p = p.slice(LEGACY_PREFIX.length);
+  return `${PREFIX}${p}`;
 }
 
 /**
@@ -27,6 +32,7 @@ export function asset(path: string): string {
  */
 export function unprefix(path: string): string {
   if (!path || !path.startsWith("/")) return path;
+  if (path.startsWith(`${LEGACY_PREFIX}/`)) return path.slice(LEGACY_PREFIX.length);
   if (PREFIX && path.startsWith(`${PREFIX}/`)) return path.slice(PREFIX.length);
   return path;
 }

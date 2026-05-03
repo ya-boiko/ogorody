@@ -24,6 +24,10 @@ describe("asset() with no prefix", () => {
     expect(asset("/assets/logo.png")).toBe("/assets/logo.png");
   });
 
+  it("strips /ogorody prefix baked into Decap-authored content", () => {
+    expect(asset("/ogorody/assets/plots/foo.jpg")).toBe("/assets/plots/foo.jpg");
+  });
+
   it("passes through empty string", () => {
     expect(asset("")).toBe("");
   });

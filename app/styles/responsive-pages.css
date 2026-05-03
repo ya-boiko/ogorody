@@ -1,0 +1,230 @@
+/* ===== PAGE-SPECIFIC RESPONSIVE RULES =====
+ * These rules live inline in v4 design HTML pages but were not part of the
+ * shared responsive.css migration. Without them hero sections (about, blog,
+ * news, article, contact-main) stay 2-column at mobile widths and various
+ * page sections don't switch to mobile-friendly layouts.
+ */
+
+@media (max-width: 768px) {
+  /* === About — О проекте === */
+  .about-hero-section { padding: 4px 0 40px; }
+  .about-hero-section .layout { grid-template-columns: 1fr; gap: 20px; }
+  .about-hero-section .hero-img {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    order: -1;
+  }
+  .about-hero-section .hero-info { gap: 14px; order: 1; }
+  .about-hero-section h2 { font-size: 26px; line-height: 1.15; }
+  .about-hero-section .hero-lede { font-size: 15px; line-height: 1.55; }
+
+  .values-section { padding: 48px 0; }
+  .values-section h2 { font-size: 24px; }
+  .values-section .wrap { padding-right: 0; }
+  .values-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 20px 16px 0;
+    margin-right: -20px;
+    scrollbar-width: none;
+  }
+  .values-grid::-webkit-scrollbar { display: none; }
+  .values-grid > * {
+    flex: 0 0 80%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .stats-block { padding: 48px 0; }
+  .stats-block .layout { grid-template-columns: 1fr; gap: 24px; }
+  .stats-block .stats-img { order: -1; aspect-ratio: 4 / 3; }
+  .stats-block .text { order: 1; }
+  .stats-block h2 { font-size: 24px; }
+
+  .team-section { padding: 48px 0; }
+  .team-section h2 { font-size: 24px; }
+  .team-grid { grid-template-columns: 1fr; gap: 14px; }
+
+  .gallery-section { padding: 48px 0; }
+  .gallery-section h2 { font-size: 24px; }
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px 160px;
+    gap: 8px;
+  }
+
+  .about-cta { padding: 56px 0; }
+  .about-cta h2 { font-size: 26px; }
+  .about-cta p { font-size: 15px; }
+  .about-cta button { width: 100%; padding: 14px 22px; font-size: 14px; }
+
+  /* === Contacts — Контакты === */
+  .contacts-block { padding: 32px 0 48px; }
+  .contacts-block .wrap { padding-right: 0; }
+  .contacts-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 20px 16px 0;
+    margin-right: -20px;
+    scrollbar-width: none;
+  }
+  .contacts-grid::-webkit-scrollbar { display: none; }
+  .contacts-grid > .contact-card {
+    flex: 0 0 78%;
+    max-width: 300px;
+    scroll-snap-align: start;
+  }
+
+  .contact-main { padding: 48px 0; }
+  .contact-main .layout { grid-template-columns: 1fr; gap: 20px; }
+  .contact-main .map-card { order: -1; }
+  .contact-main h2 { font-size: 24px; }
+  .form-grid-2 { grid-template-columns: 1fr; gap: 12px; }
+
+  .socials-block { padding: 48px 0; }
+  .socials-block h2 { font-size: 24px; }
+  .socials-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .faq-block { padding: 48px 0; }
+  .faq-block h2 { font-size: 24px; margin-bottom: 28px; }
+  .faq-header { padding: 18px 20px; }
+  .faq-header h3 { font-size: 15px; }
+  .faq-item.open .faq-body { padding: 0 20px 18px; }
+
+  /* === Blog list — Блог === */
+  .blog-hero { padding: 4px 0 40px; }
+  .blog-hero .layout { grid-template-columns: 1fr; gap: 20px; }
+  .blog-hero .hero-img {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    order: -1;
+  }
+  .blog-hero .hero-info { gap: 14px; order: 1; }
+  .blog-hero h2 { font-size: 26px; line-height: 1.15; }
+  .blog-hero .hero-lede { font-size: 15px; line-height: 1.55; }
+
+  .blog-articles { padding: 32px 0 56px; }
+  .blog-articles .wrap { padding-right: 0; }
+  .blog-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 20px 16px 0;
+    margin-right: -20px;
+    scrollbar-width: none;
+  }
+  .blog-grid::-webkit-scrollbar { display: none; }
+  .blog-grid > .article-card {
+    flex: 0 0 80%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .blog-newsletter { padding: 56px 0; }
+  .blog-newsletter h2 { font-size: 26px; }
+  .blog-newsletter p { font-size: 15px; }
+  .blog-newsletter form { flex-direction: column; gap: 10px; }
+  .blog-newsletter input { width: 100%; padding: 14px 18px; }
+  .blog-newsletter button { width: 100%; padding: 14px 22px; font-size: 14px; }
+
+  /* === Blog article — Статья === */
+  .article-hero-section { padding: 4px 0 32px; }
+  .article-hero-section .layout { grid-template-columns: 1fr; gap: 20px; }
+  .article-hero-section .hero-img {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    order: -1;
+  }
+  .article-hero-section .hero-info { gap: 14px; order: 1; }
+  .article-hero-section h1,
+  .article-hero-section h2 { font-size: 26px; line-height: 1.2; }
+  .article-hero-section .hero-lede { font-size: 15px; line-height: 1.55; }
+
+  .article-body { padding: 40px 0; }
+  .article-body .layout { grid-template-columns: 1fr; gap: 32px; }
+  .article-sidebar { position: static; }
+  .article-content p { font-size: 15px; line-height: 1.7; }
+  .article-content h2 { font-size: 22px; }
+  .article-content h3 { font-size: 18px; }
+
+  .related-section { padding: 48px 0; }
+  .related-section h2 { font-size: 24px; margin-bottom: 24px; }
+  .related-section .wrap { padding-right: 0; }
+  .related-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 20px 16px 0;
+    margin-right: -20px;
+    scrollbar-width: none;
+  }
+  .related-grid::-webkit-scrollbar { display: none; }
+  .related-grid > * {
+    flex: 0 0 80%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .article-cta { padding: 56px 0; }
+  .article-cta h2 { font-size: 26px; }
+  .article-cta p { font-size: 15px; }
+  .article-cta button { width: 100%; padding: 14px 22px; font-size: 14px; }
+
+  /* === News (list + item) — Новости === */
+  .news-hero-section { padding: 4px 0 32px; }
+  .news-hero-section .layout { grid-template-columns: 1fr; gap: 20px; }
+  .news-hero-section .hero-img {
+    aspect-ratio: 4 / 3;
+    border-radius: var(--radius);
+    order: -1;
+  }
+  .news-hero-section .hero-info { gap: 14px; order: 1; }
+  .news-hero-section h1,
+  .news-hero-section h2 { font-size: 26px; line-height: 1.2; }
+  .news-hero-section .hero-lede { font-size: 15px; line-height: 1.55; }
+
+  .news-articles { padding: 24px 0 56px; }
+  .news-articles .wrap { padding-right: 0; }
+  .news-grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 20px 16px 0;
+    margin-right: -20px;
+    scrollbar-width: none;
+  }
+  .news-grid::-webkit-scrollbar { display: none; }
+  .news-grid > .news-card {
+    flex: 0 0 80%;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .news-newsletter { padding: 56px 0; }
+  .news-newsletter h2 { font-size: 26px; }
+  .news-newsletter p { font-size: 15px; }
+  .news-newsletter form { flex-direction: column; gap: 10px; }
+  .news-newsletter input { width: 100%; padding: 14px 18px; }
+  .news-newsletter button { width: 100%; padding: 14px 22px; font-size: 14px; }
+
+  /* News item-specific — sidebar info card stacks below article */
+  .sidebar-card { position: static; }
+  .sidebar-card .info-rows li { grid-template-columns: 1fr; gap: 4px; }
+
+  .news-cta { padding: 56px 0; }
+  .news-cta h2 { font-size: 26px; }
+  .news-cta p { font-size: 15px; }
+  .news-cta button { width: 100%; padding: 14px 22px; font-size: 14px; }
+}

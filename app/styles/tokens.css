@@ -46,6 +46,22 @@ img {
   max-width: 100%;
   display: block;
 }
+/* When CSS sets width:100% + aspect-ratio on an image, the HTML width/height
+ * attributes that next/image adds would otherwise pin the height. Letting
+ * height auto-compute makes aspect-ratio rules work as designed. */
+.hero-img,
+.featured-img,
+.article-card .card-img,
+.news-card .card-img,
+.related-card .card-img,
+.gallery-grid img,
+.stats-block .stats-img,
+.contact-main .map-img,
+.gallery .main-img,
+.gallery .thumbs img,
+.plot-card .media img {
+  height: auto;
+}
 a {
   color: inherit;
   text-decoration: none;

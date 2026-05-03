@@ -17,6 +17,7 @@ import "./styles/news-item.css";
 import "./styles/lead-form.css";
 import "./styles/error-page.css";
 import "./styles/responsive.css";
+import "./styles/responsive-pages.css";
 
 const manrope = localFont({
   src: [
